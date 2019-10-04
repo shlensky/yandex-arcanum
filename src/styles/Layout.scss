@@ -1,0 +1,9 @@
+@import "styles/mixins/media.scss";
+
+.Layout-Container {
+  padding: 12px 16px;
+
+  @include desktop-only {
+    padding: 12px 32px;
+  }
+}

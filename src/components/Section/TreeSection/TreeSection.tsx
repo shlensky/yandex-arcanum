@@ -16,7 +16,9 @@ export default function TreeSection({  }: TreeSectionProps) {
 
     return (
         <div className={cnTreeSection(null, ['Body'])}>
-            <div className="Layout">{files && <FilesTable files={files} className="DesktopOnly" />}</div>
+            <div className="Layout Layout-Container">
+                {files && <FilesTable files={files} className="DesktopOnly" />}
+            </div>
         </div>
     );
 }

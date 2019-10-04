@@ -1,12 +1,11 @@
 import * as React from 'react';
-
 import { cn } from '@bem-react/classname';
-
 import { Link } from 'react-router-dom';
 
-import 'components/Header/Header.scss';
-import { Dropdown } from '../Dropdown/Dropdown';
+import { Dropdown } from 'components/Dropdown/Dropdown';
 
+import 'components/Header/Header.scss';
+import 'styles/Navigation.scss';
 import Logo from 'components/Header/logo.svg';
 
 const cnHeader = cn('Header');

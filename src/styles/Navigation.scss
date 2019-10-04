@@ -1,0 +1,31 @@
+.Navigation {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.Navigation_color_type1 {
+  color: #f0f2f3;
+}
+
+.Navigation-Item {
+  box-sizing: border-box;
+  height: 100%;
+  margin-bottom: -1px;
+  color: #7f8285;
+  border-bottom: 3px solid transparent;
+}
+
+.Navigation-Item_current {
+  color: #000000;
+  border-bottom-color: #ff4f49;
+}
+
+.Navigation-Item_pull_right {
+  margin-left: auto;
+}
+
+.Navigation .Navigation-DropdownContent {
+  margin-top: 3px;
+}
