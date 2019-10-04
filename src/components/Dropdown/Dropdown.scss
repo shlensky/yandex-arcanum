@@ -1,0 +1,137 @@
+/*
+    .Dropdown                   - container
+    .Dropdown_state_opened      - if dropdown opened, dropdown content is visible
+    .Dropdown-Content           - container for content of dropdown
+
+    .Dropdown-Menu      - simple menu
+    .Dropdown-MenuItem  - item of menu
+ */
+
+.Dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 24px; /* fixme: find better place for this */
+  cursor: pointer;
+
+  /* chevron */
+  &:after {
+    position: absolute;
+    right: -18px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    content: ' ';
+    transition: transform 0.3s ease;
+    //background-image: url('../images/chevron_down.svg');
+    background-position: center;
+  }
+
+  &_state_opened:after {
+    transform: rotate(-180deg);
+  }
+
+  &-Label {
+  }
+
+  &-Value {
+    margin-left: 4px;
+    color: #7f8285;
+  }
+}
+
+.Dropdown-MenuItem {
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.Dropdown-MenuItem:last-of-type {
+  margin-bottom: 0;
+}
+
+.Dropdown-Content {
+  margin-top: 2px;
+  cursor: default;
+  background: #ffffff;
+}
+
+/* desktop */
+@media (min-width: 361px) {
+  .Dropdown-Content {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    display: none;
+    min-width: 266px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(53, 73, 93, 0.2);
+  }
+
+  .Dropdown-Content_corners_rounded {
+    border-radius: 5px;
+  }
+
+  .Dropdown_state_opened .Dropdown-Content {
+    display: block;
+  }
+
+  .Dropdown-Menu {
+    padding: 14px 22px 18px;
+  }
+
+  .Dropdown-MenuItem {
+    margin-bottom: 16px;
+  }
+}
+
+/* mobile */
+@media (max-width: 360px) {
+  .Dropdown-Content {
+    position: fixed;
+    z-index: 2;
+    bottom: -100%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 24px;
+    transition: bottom .5s ease;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .Dropdown_state_opened .Dropdown-Content {
+    bottom: 0;
+  }
+
+  /* shadow */
+  .Dropdown_state_opened:before {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  /* handle at the top of the list */
+  .Dropdown_state_opened .Dropdown-Content:after {
+    position: absolute;
+    top: 8px;
+    left: calc(50% - 21px);
+    width: 42px;
+    height: 4px;
+    content: '';
+    border-radius: 10px;
+    background: #e5e5e5;
+  }
+
+  .Dropdown-Menu {
+    padding: 36px 16px 24px;
+  }
+
+  .Dropdown-MenuItem {
+    margin-bottom: 24px;
+  }
+}
