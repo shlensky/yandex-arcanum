@@ -9,6 +9,8 @@ import { Routes } from 'routes';
 import { Header } from 'components/Header/Header';
 
 import 'components/App/App.scss';
+import 'styles/Link.scss';
+import 'styles/Username.scss';
 
 const cnApp = cn('App');
 

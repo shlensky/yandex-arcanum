@@ -1,0 +1,9 @@
+.Username {
+  display: inline-block;
+  text-decoration: none;
+  color: #000000;
+}
+
+.Username::first-letter {
+  color: #ff3029;
+}

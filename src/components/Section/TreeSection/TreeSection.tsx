@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { cn } from '@bem-react/classname';
 
-import { Link } from 'react-router-dom';
-
-// import { AppState } from 'store';
-// import { useSelector, useDispatch } from 'react-redux';
+import { AppState } from 'store';
+import { useSelector } from 'react-redux';
+import { FilesTable } from '../../FilesTable/FilesTable';
 
 import 'components/Section/TreeSection/TreeSection.scss';
 
@@ -13,10 +12,11 @@ const cnTreeSection = cn('TreeSection');
 export interface TreeSectionProps {}
 
 export default function TreeSection({  }: TreeSectionProps) {
+    let files = useSelector((state: AppState) => state.tree);
+
     return (
-        <div className={cnTreeSection()}>
-            <h1>Tree page</h1>
-            <Link to="/blob/test">View blob page</Link>
+        <div className={cnTreeSection(null, ['Body'])}>
+            <div className="Layout">{files && <FilesTable files={files} className="DesktopOnly" />}</div>
         </div>
     );
 }

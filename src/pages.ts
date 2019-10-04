@@ -8,7 +8,7 @@ export const PAGES: Record<Routes, RouteProps> = {
         exact: true,
         path: '/',
         component: lazyComponentBabel(() =>
-            import(/* webpackChunkName: "page.blob" */ 'components/Section/TreeSection/TreeSection'),
+            import(/* webpackChunkName: "page.tree" */ 'components/Section/TreeSection/TreeSection'),
         ),
     },
 

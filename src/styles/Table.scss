@@ -1,0 +1,47 @@
+.Table-Container {
+  overflow-y: auto;
+}
+
+.Table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.Table_layout_fixed {
+  table-layout: fixed;
+}
+
+.Table-Head {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  height: 44px;
+  text-align: left;
+  color: #b8bec3;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.Table-Head_size_sm {
+  width: 140px;
+}
+
+.Table-Head_size_md {
+  width: 260px;
+}
+
+.Table-Head_size_lg {
+  width: 390px;
+}
+
+.Table-Head:last-of-type {
+  text-align: right;
+}
+
+.Table-Data {
+  height: 48px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.Table-Data:last-of-type {
+  text-align: right;
+}
