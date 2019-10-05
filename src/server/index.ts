@@ -1,8 +1,8 @@
-import env from 'dotenv';
 import express from 'express';
 
 import { join } from 'path';
 
+import { PORT } from 'env';
 import { clientAssets } from 'server/middleware/clientAssets';
 import { prepareState } from 'server/middleware/prepareState';
 import { renderPage } from 'server/middleware/renderPage';
@@ -10,7 +10,6 @@ import { treeApi, blobApi } from 'server/middleware/standaloneApi';
 import { errorHandler } from 'server/middleware/errorHandler';
 import { routeApi } from 'server/middleware/routeApi';
 
-env.config();
 const app = express();
 
 app.use(express.static(join(__dirname, 'client')));
@@ -30,7 +29,7 @@ app.use(renderPage());
 // Handle all errors
 app.use(errorHandler());
 
-const port = process.env.PORT || 3000;
+const port = PORT || 3000;
 app.listen(port);
 
 console.info(`Listening on http://localhost:${port}`);
