@@ -3,6 +3,7 @@ import { cn } from '@bem-react/classname';
 
 import { TreeItem } from 'schema/Tree';
 import { DateTime } from 'components/DateTime/DateTime';
+import { FileIcon } from '../FileIcon/FileIcon';
 
 import 'components/FilesTable/FilesTable.scss';
 import 'styles/Table.scss';
@@ -31,7 +32,7 @@ export function FilesTable({ files, className }: FilesTableProps) {
                     <tr key={file.hash}>
                         <td className="Table-Data">
                             <a className="Link_plain" href="#">
-                                {/*<img src="images/{file.icon}.svg" alt="<%= file.icon %>" />*/}
+                                <FileIcon treeItem={file} />
                                 {file.name}
                             </a>
                         </td>

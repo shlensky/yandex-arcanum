@@ -146,6 +146,14 @@ async function getTreeItemDetails(repoPath: string, branch: string, line: Parsed
     };
 }
 
+function compareFileTypes(a: TreeItem, b: TreeItem) {
+    return a.type === 'blob' && b.type === 'blob' ? 0 : a.type === 'blob' ? 1 : -1;
+}
+
+function compareFileNames(a: TreeItem, b: TreeItem) {
+    return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+}
+
 export async function getTree(repoPath: string, branch: string, path: string): Promise<TreeItem[]> {
     const GET_TREE_COMMAND = `git --no-pager ls-tree ${branch} ${path}/`;
 
@@ -157,7 +165,9 @@ export async function getTree(repoPath: string, branch: string, path: string): P
         .filter(line => !!line.trim())
         .map(parseTreeLine);
 
-    return await Promise.all(lines.map(line => getTreeItemDetails(repoPath, branch, line)));
+    const treeItems = await Promise.all(lines.map(line => getTreeItemDetails(repoPath, branch, line)));
+
+    return treeItems.sort(compareFileNames).sort(compareFileTypes);
 }
 
 export function getBlob(repoPath: string, branch: string, path: string) {
