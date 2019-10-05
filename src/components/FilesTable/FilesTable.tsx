@@ -2,6 +2,7 @@ import * as React from 'react';
 import { cn } from '@bem-react/classname';
 
 import { TreeItem } from 'schema/Tree';
+import { DateTime } from 'components/DateTime/DateTime';
 
 import 'components/FilesTable/FilesTable.scss';
 import 'styles/Table.scss';
@@ -35,7 +36,7 @@ export function FilesTable({ files, className }: FilesTableProps) {
                             </a>
                         </td>
                         <td className="Table-Data">
-                            <a className="Link" href="commit.html">
+                            <a className="Link" href="/">
                                 {file.lastCommit}
                             </a>
                         </td>
@@ -45,7 +46,9 @@ export function FilesTable({ files, className }: FilesTableProps) {
                                 {file.committer}
                             </a>
                         </td>
-                        <td className="Table-Data">{file.updated}</td>
+                        <td className="Table-Data">
+                            <DateTime date={new Date(file.updated)} />
+                        </td>
                     </tr>
                 ))}
             </tbody>
