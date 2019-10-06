@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { withRouter, RouteComponentProps, Switch } from 'react-router';
-import { RouterParams } from 'store/router/types';
+import { useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { fetchRoute } from 'store/router/actions';
 
@@ -9,13 +8,11 @@ export interface DataLoaderProps {
     children: React.ReactNode;
 }
 
-export const DataLoader = withRouter(function DataLoader({
-    children,
-    location,
-}: DataLoaderProps & RouteComponentProps<RouterParams>) {
-    let [prevLocation, setPrevLocation] = React.useState(location);
-    let [hasError, setError] = React.useState(false);
-    let dispatch = useDispatch();
+export function DataLoader({ children }: DataLoaderProps) {
+    const location = useLocation();
+    const [prevLocation, setPrevLocation] = React.useState(location);
+    const [hasError, setError] = React.useState(false);
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         // Location, was changed. We need to load data
@@ -43,5 +40,5 @@ export const DataLoader = withRouter(function DataLoader({
         return <h1>Error loading data</h1>;
     }
 
-    return <Switch location={prevLocation}>{children}</Switch>;
-});
+    return <>{children}</>;
+}

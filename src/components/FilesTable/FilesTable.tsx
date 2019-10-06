@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { cn } from '@bem-react/classname';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import { AppState } from 'store';
 import { TreeItem } from 'schema/Tree';
 import { DateTime } from 'components/DateTime/DateTime';
 import { FileIcon } from 'components/FileIcon/FileIcon';
@@ -18,7 +20,8 @@ export interface FilesTableProps {
 }
 
 export function FilesTable({ files, className }: FilesTableProps) {
-    const { repositoryId, path } = useParams();
+    const params = useSelector((state: AppState) => state.router && state.router.params);
+    const { repositoryId, path } = params ? params : { repositoryId: '', path: '' };
 
     return (
         <table className={cnFilesTable(null, ['Table', className])}>

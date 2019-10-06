@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { FileIcon } from '../FileIcon/FileIcon';
+import { AppState } from 'store';
+import { FileIcon } from 'components/FileIcon/FileIcon';
 
 export function ParentDirectoryLink() {
-    const { repositoryId, path } = useParams();
+    const params = useSelector((state: AppState) => state.router && state.router.params);
+    if (!params) {
+        return null;
+    }
+
+    const { repositoryId, path } = params;
 
     let parentPath;
     if (path) {
