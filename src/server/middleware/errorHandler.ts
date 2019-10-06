@@ -1,7 +1,8 @@
-import { Request, Response, ErrorRequestHandler } from 'express';
+import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 
 export function errorHandler(): ErrorRequestHandler {
-    return async function(err: Error, req: Request, res: Response) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return async function(err: Error, req: Request, res: Response, next: NextFunction) {
         if (!res.headersSent) {
             res.status(500);
         }

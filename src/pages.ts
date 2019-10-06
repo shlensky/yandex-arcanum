@@ -6,7 +6,7 @@ import { lazyComponentBabel } from 'components/Lazy/Lazy';
 export const PAGES: Record<Routes, RouteProps> = {
     [Routes.TREE]: {
         exact: true,
-        path: '/',
+        path: ['/:repositoryId', '/:repositoryId/tree/:commitHash/:path([^/]*)'],
         component: lazyComponentBabel(() =>
             import(/* webpackChunkName: "page.tree" */ 'components/Section/TreeSection/TreeSection'),
         ),

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { cn } from '@bem-react/classname';
+import { Link, useParams } from 'react-router-dom';
 
 import { TreeItem } from 'schema/Tree';
 import { DateTime } from 'components/DateTime/DateTime';
-import { FileIcon } from '../FileIcon/FileIcon';
+import { FileIcon } from 'components/FileIcon/FileIcon';
+import { ParentDirectoryLink } from 'components/ParentDirectoryLink/ParentDirectoryLink';
 
 import 'components/FilesTable/FilesTable.scss';
 import 'styles/Table.scss';
@@ -16,6 +18,8 @@ export interface FilesTableProps {
 }
 
 export function FilesTable({ files, className }: FilesTableProps) {
+    const { repositoryId, path } = useParams();
+
     return (
         <table className={cnFilesTable(null, ['Table', className])}>
             <thead>
@@ -28,13 +32,20 @@ export function FilesTable({ files, className }: FilesTableProps) {
                 </tr>
             </thead>
             <tbody>
+                {path && (
+                    <tr>
+                        <td className="Table-Data" colSpan={5}>
+                            <ParentDirectoryLink />
+                        </td>
+                    </tr>
+                )}
                 {files.map(file => (
                     <tr key={file.hash}>
                         <td className="Table-Data">
-                            <a className="Link_plain" href="#">
-                                <FileIcon treeItem={file} />
+                            <Link to={`/${repositoryId}/tree/master/${file.name}`} className="Link_plain">
+                                <FileIcon type={file.type} />
                                 {file.name}
-                            </a>
+                            </Link>
                         </td>
                         <td className="Table-Data">
                             <a className="Link" href="/">

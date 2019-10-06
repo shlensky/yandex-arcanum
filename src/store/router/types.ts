@@ -3,6 +3,9 @@ import { Routes } from 'routes';
 
 export interface RouterParams {
     id: string;
+    repositoryId?: string;
+    commitHash?: string;
+    path?: string;
 }
 
 export interface RouterEvent extends match<RouterParams> {
