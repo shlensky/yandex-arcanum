@@ -1,0 +1,62 @@
+@import "styles/mixins/media.scss";
+
+.Pane {
+  &-Header {
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px 4px 0 0;
+    background: #f5f5f5;
+  }
+
+  &-Name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-HeaderAux {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    @include mobile-only {
+      display: none;
+    }
+  }
+
+  &-FileTypeIcon {
+    margin-right: 12px;
+  }
+
+  &-Note {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-left: 4px;
+    white-space: nowrap;
+    color: #999999;
+  }
+
+  &-Body {
+    padding: 23px;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+
+    @include desktop-only {
+      padding: 24px 32px;
+    }
+
+    &_no_padding {
+      padding: 0;
+    }
+  }
+
+  &-BodyScroll {
+    overflow-y: auto;
+  }
+}

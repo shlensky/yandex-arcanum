@@ -116,15 +116,16 @@ interface ParsedTreeLine {
     mode: string;
     type: 'tree' | 'blob';
     hash: string;
+    size: string;
     name: string;
 }
 
 function parseTreeLine(line: string): ParsedTreeLine {
     const [modeTypeHash, name] = line.split('\t');
-    const [mode, type, hash] = modeTypeHash.split(' ');
+    const [mode, type, hash, size] = modeTypeHash.split(/\s+/g);
 
     // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
-    return { mode, type, hash, name } as ParsedTreeLine;
+    return { mode, type, hash, size, name } as ParsedTreeLine;
 }
 
 async function getTreeItemDetails(repoPath: string, branch: string, line: ParsedTreeLine): Promise<TreeItem> {
@@ -138,6 +139,7 @@ async function getTreeItemDetails(repoPath: string, branch: string, line: Parsed
         hash: line.hash,
         name: line.name,
         type: line.type,
+        size: line.size,
         mode: line.mode,
         lastCommit,
         lastMessage,
@@ -155,8 +157,7 @@ function compareFileNames(a: TreeItem, b: TreeItem) {
 }
 
 export async function getTree(repoPath: string, branch: string, path: string): Promise<TreeItem[]> {
-    const GET_TREE_COMMAND = `git --no-pager ls-tree ${branch} ${path}/`;
-
+    const GET_TREE_COMMAND = `git --no-pager ls-tree -l ${branch} ${path}`;
     const options = { cwd: repoPath };
     const { stdout } = await execAsync(GET_TREE_COMMAND, options);
 

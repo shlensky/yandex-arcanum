@@ -6,7 +6,7 @@ import { PORT } from 'env';
 import { clientAssets } from 'server/middleware/clientAssets';
 import { prepareState } from 'server/middleware/prepareState';
 import { renderPage } from 'server/middleware/renderPage';
-import { treeApi, blobApi } from 'server/middleware/standaloneApi';
+import { blobApi } from 'server/middleware/standaloneApi';
 import { errorHandler } from 'server/middleware/errorHandler';
 import { routeApi } from 'server/middleware/routeApi';
 
@@ -15,8 +15,7 @@ const app = express();
 app.use(express.static(join(__dirname, 'client')));
 
 // Standalone API
-app.get('/api/tree', treeApi());
-app.get('/api/blob/:id', blobApi());
+app.get('/api/:repositoryId/blob/:commitHash/:path([^/]*)', blobApi());
 
 // Universal route API
 app.get('/api/route', routeApi());

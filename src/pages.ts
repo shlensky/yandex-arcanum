@@ -13,7 +13,7 @@ export const PAGES: Record<Routes, RouteProps> = {
     },
 
     [Routes.BLOB]: {
-        path: '/blob/:id',
+        path: '/:repositoryId/blob/:commitHash/:path([^/]*)',
 
         component: lazyComponentBabel(() =>
             import(/* webpackChunkName: "page.blob" */ 'components/Section/BlobSection/BlobSection'),

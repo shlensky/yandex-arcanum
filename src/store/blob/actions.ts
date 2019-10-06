@@ -1,38 +1,52 @@
-import { SetBlobAction, SET_BLOB, BlobState, SET_BLOB_LOADING, SetBlobLoadingAction } from 'store/blob/types';
+import {
+    SET_TREE_ITEM,
+    SET_CONTENT_LOADED,
+    SET_CONTENT,
+    SetTreeItemAction,
+    SetContentLoadedAction,
+    SetContentAction,
+} from 'store/blob/types';
 import { ThunkAction } from 'redux-thunk';
 import { AppState, AppTypes } from 'store/index';
+import { TreeItem } from '../../schema/Tree';
 
-export function setBlob(blob: BlobState): SetBlobAction {
+export function setTreeItem(treeItem: TreeItem): SetTreeItemAction {
     return {
-        type: SET_BLOB,
-        payload: blob,
+        type: SET_TREE_ITEM,
+        payload: treeItem,
     };
 }
 
-export function setBlobLoading(loading: boolean): SetBlobLoadingAction {
+export function setContentLoaded(contentLoaded: boolean): SetContentLoadedAction {
     return {
-        type: SET_BLOB_LOADING,
-        payload: loading,
+        type: SET_CONTENT_LOADED,
+        payload: contentLoaded,
     };
 }
 
-export function fetchBlob(blobId: string): ThunkAction<Promise<void>, AppState, string, AppTypes> {
-    return async function(dispatch, getState) {
+export function setContent(content: string): SetContentAction {
+    return {
+        type: SET_CONTENT,
+        payload: content,
+    };
+}
+
+export function fetchContent(
+    repositoryId: string,
+    commitHash: string,
+    path: string,
+): ThunkAction<Promise<void>, AppState, string, AppTypes> {
+    return async function(dispatch) {
         try {
-            let blob = getState().blob;
+            dispatch(setContentLoaded(false));
 
-            if (blob && blob.blob && blob.blob.object === blobId) {
-                return;
-            }
+            let response = await fetch(`/api/${repositoryId}/blob/${commitHash}/${path}`);
+            let content = await response.text();
 
-            dispatch(setBlobLoading(true));
-
-            let response = await fetch('/api/blob/' + blobId);
-            let data: BlobState = await response.json();
-
-            dispatch(setBlob(data));
-        } finally {
-            dispatch(setBlobLoading(false));
+            dispatch(setContent(content));
+            dispatch(setContentLoaded(true));
+        } catch (e) {
+            console.error(e);
         }
     };
 }

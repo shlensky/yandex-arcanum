@@ -48,7 +48,10 @@ export function FilesTable({ files, className }: FilesTableProps) {
                 {files.map(file => (
                     <tr key={file.hash}>
                         <td className="Table-Data">
-                            <Link to={`/${repositoryId}/tree/${commitHash}/${file.name}`} className="Link_plain">
+                            <Link
+                                to={`/${repositoryId}/${file.type}/${commitHash}/${file.name}`}
+                                className="Link_plain"
+                            >
                                 <FileIcon type={file.type} />
                                 {path ? file.name.replace(path + '/', '') : file.name}
                             </Link>

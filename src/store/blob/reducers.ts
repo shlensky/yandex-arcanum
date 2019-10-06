@@ -1,15 +1,23 @@
-import { BlobState, BlobTypes, SET_BLOB_LOADING, SET_BLOB } from 'store/blob/types';
+import { BlobState, BlobTypes, SET_CONTENT, SET_CONTENT_LOADED, SET_TREE_ITEM } from 'store/blob/types';
 
 const DEFAULT_STATE: BlobState = {};
 
 export function blobReducer(state: BlobState = DEFAULT_STATE, action: BlobTypes): BlobState {
     switch (action.type) {
-        case SET_BLOB:
-            return action.payload;
-        case SET_BLOB_LOADING:
+        case SET_TREE_ITEM:
             return {
                 ...state,
-                loading: action.payload,
+                treeItem: action.payload,
+            };
+        case SET_CONTENT_LOADED:
+            return {
+                ...state,
+                contentLoaded: action.payload,
+            };
+        case SET_CONTENT:
+            return {
+                ...state,
+                content: action.payload,
             };
         default:
             return state;

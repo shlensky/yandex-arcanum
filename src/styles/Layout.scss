@@ -1,9 +1,53 @@
 @import "styles/mixins/media.scss";
 
-.Layout-Container {
-  padding: 12px 16px;
+.Layout {
+  &-Container {
+    padding: 12px 16px;
 
-  @include desktop-only {
-    padding: 12px 32px;
+    @include desktop-only {
+      padding: 12px 32px;
+    }
+  }
+
+  &-Branch {
+    display: flex;
+    margin-top: 10px;
+
+    @include desktop-only {
+      margin-top: 12px;
+    }
+  }
+
+  &-LastCommit {
+    margin-top: 4px;
+
+    @include desktop-only {
+      margin-top: 10px;
+    }
+  }
+
+  &-Tabs {
+    margin-top: 16px;
+
+    @include desktop-only {
+      margin-top: 18px;
+    }
+  }
+
+  &-Timeline {
+    margin-top: 18px;
+
+    @include desktop-only {
+      margin-top: 24px;
+    }
+  }
+
+  &-FileView {
+    margin-top: 12px;
+
+    @include desktop-only {
+      margin-top: 16px;
+      padding: 0 32px;
+    }
   }
 }

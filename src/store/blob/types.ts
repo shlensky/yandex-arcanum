@@ -1,22 +1,28 @@
-import { Blob } from 'schema/Blob';
+import { TreeItem } from 'schema/Tree';
 
-export const SET_BLOB = 'SET_BLOB';
-export const SET_BLOB_LOADING = 'SET_BLOB_LOADING';
+export const SET_TREE_ITEM = 'SET_TREE_ITEM';
+export const SET_CONTENT_LOADED = 'SET_CONTENT_LOADED';
+export const SET_CONTENT = 'SET_CONTENT';
 
-export interface SetBlobAction {
-    type: typeof SET_BLOB;
-    payload: BlobState;
+export interface SetTreeItemAction {
+    type: typeof SET_TREE_ITEM;
+    payload: TreeItem;
 }
 
-export interface SetBlobLoadingAction {
-    type: typeof SET_BLOB_LOADING;
+export interface SetContentLoadedAction {
+    type: typeof SET_CONTENT_LOADED;
     payload: boolean;
 }
 
-export interface BlobState {
-    loading?: boolean;
-
-    blob?: Blob;
+export interface SetContentAction {
+    type: typeof SET_CONTENT;
+    payload: string;
 }
 
-export type BlobTypes = SetBlobAction | SetBlobLoadingAction;
+export interface BlobState {
+    treeItem?: TreeItem;
+    contentLoaded?: boolean;
+    content?: string;
+}
+
+export type BlobTypes = SetTreeItemAction | SetContentLoadedAction | SetContentAction;

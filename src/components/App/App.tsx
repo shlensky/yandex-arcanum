@@ -12,6 +12,7 @@ import 'components/App/App.scss';
 import 'styles/Layout.scss';
 import 'styles/Link.scss';
 import 'styles/Username.scss';
+import 'styles/Scroll.scss';
 
 const cnApp = cn('App');
 

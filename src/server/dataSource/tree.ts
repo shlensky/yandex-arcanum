@@ -8,7 +8,7 @@ import { getTree as gitGetTree } from 'server/lib/git';
 
 export async function getTreeState(repositoryId: string, branch: string, path: string): Promise<TreeState> {
     const repositoryPath = resolve(REPOS_DIR, repositoryId);
-    const treeItems = await gitGetTree(repositoryPath, branch, path);
+    const treeItems = await gitGetTree(repositoryPath, branch, path + '/');
 
     return treeItems;
 }
