@@ -11,7 +11,7 @@ export function ParentDirectoryLink() {
         return null;
     }
 
-    const { repositoryId, path } = params;
+    const { repositoryId, commitHash, path } = params;
 
     let parentPath;
     if (path) {
@@ -20,7 +20,7 @@ export function ParentDirectoryLink() {
         parentPath = parts.join('/');
     }
 
-    const parentUrl = `/${repositoryId}${parentPath ? `/tree/master/${parentPath}` : ''}`;
+    const parentUrl = `/${repositoryId}${parentPath ? `/tree/${commitHash}/${parentPath}` : ''}`;
     return (
         <Link to={parentUrl} className="Link_plain">
             <FileIcon type="tree" />

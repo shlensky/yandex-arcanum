@@ -21,7 +21,10 @@ export interface FilesTableProps {
 
 export function FilesTable({ files, className }: FilesTableProps) {
     const params = useSelector((state: AppState) => state.router && state.router.params);
-    const { repositoryId, path } = params ? params : { repositoryId: '', path: '' };
+    if (!params) {
+        return null;
+    }
+    const { repositoryId, commitHash, path } = params;
 
     return (
         <table className={cnFilesTable(null, ['Table', className])}>
@@ -45,7 +48,7 @@ export function FilesTable({ files, className }: FilesTableProps) {
                 {files.map(file => (
                     <tr key={file.hash}>
                         <td className="Table-Data">
-                            <Link to={`/${repositoryId}/tree/master/${file.name}`} className="Link_plain">
+                            <Link to={`/${repositoryId}/tree/${commitHash}/${file.name}`} className="Link_plain">
                                 <FileIcon type={file.type} />
                                 {path ? file.name.replace(path + '/', '') : file.name}
                             </Link>
