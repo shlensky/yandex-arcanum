@@ -56,7 +56,7 @@ export function FilesTable({ files, className }: FilesTableProps) {
                                 className="Link_plain"
                             >
                                 <FileIcon type={file.type} />
-                                {path ? file.name.replace(path + '/', '') : file.name}
+                                {file.name.split('/').pop()}
                             </Link>
                         </td>
                         <td className="Table-Data">

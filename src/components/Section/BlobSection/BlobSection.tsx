@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { cn } from '@bem-react/classname';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
+import { useParams } from 'react-router';
 
 import { AppState } from 'store';
 import { FileView } from 'components/FileView/FileView';
@@ -11,7 +12,14 @@ import 'components/Section/BlobSection/BlobSection.scss';
 const cnBlobSection = cn('BlobSection');
 
 export default function BlobSection() {
+    const params = useParams();
+    const stateParams = useSelector((state: AppState) => state.router && state.router.params);
     const blobState = useSelector((state: AppState) => state.blob);
+
+    const isValidState = shallowEqual(params, stateParams);
+    if (!isValidState) {
+        return null;
+    }
 
     return (
         <section className={cnBlobSection()}>
