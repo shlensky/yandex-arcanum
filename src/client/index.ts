@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let route = getRoute(state);
 
     if (route && PAGES[route]) {
-        await (PAGES[route].component as LazyComponentType).loader();
+        const lazyComponent = PAGES[route].component as LazyComponentType;
+        if (lazyComponent.loader) await lazyComponent.loader();
     }
 
     hydrate(createElement(App, { state }), document.getElementById('root'));

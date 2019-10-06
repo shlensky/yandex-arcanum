@@ -1,9 +1,18 @@
 import { Routes } from 'routes';
 
+import HomeSection from 'components/Section/HomeSection/HomeSection';
+import NotFoundContent from 'components/Section/NotFoundContent/NotFoundContent';
+
 import { RouteProps } from 'react-router';
 import { lazyComponentBabel } from 'components/Lazy/Lazy';
 
 export const PAGES: Record<Routes, RouteProps> = {
+    [Routes.HOME]: {
+        exact: true,
+        path: '/',
+        component: HomeSection,
+    },
+
     [Routes.TREE]: {
         exact: true,
         path: ['/:repositoryId', '/:repositoryId/tree/:commitHash/:path([^/]*)'],
@@ -21,8 +30,6 @@ export const PAGES: Record<Routes, RouteProps> = {
     },
 
     [Routes.NOT_FOUND]: {
-        component: lazyComponentBabel(() =>
-            import(/* webpackChunkName: "page.notFound" */ 'components/Section/NotFoundContent/NotFoundContent'),
-        ),
+        component: NotFoundContent,
     },
 };

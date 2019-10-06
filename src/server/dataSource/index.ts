@@ -17,5 +17,9 @@ export async function getData(router: RouterState): Promise<Partial<AppState>> {
         return getBlob(router);
     }
 
+    if (router.route === Routes.HOME || router.route === Routes.NOT_FOUND) {
+        return {};
+    }
+
     throw new Error(`Cannot find data for route "${router.route}"`);
 }
