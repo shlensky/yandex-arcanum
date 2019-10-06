@@ -1,6 +1,7 @@
 import WebpackManifestPlugin from 'webpack-manifest-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import BundleAnalyzerPlugin from 'webpack-bundle-analyzer';
 import { DefinePlugin } from 'webpack';
 import { resolve } from 'path';
 import { LAZY_COMPONENT_PLUGIN } from 'build/babel/lazyComponentBabelPlugin';
@@ -16,8 +17,8 @@ export default merge(defaultConfig, {
 
     output: {
         path: resolve('dist/client/assets'),
-        filename: IS_PRODUCTION ? '[contenthash:8].js' : '[name].js',
-        chunkFilename: IS_PRODUCTION ? '_[contenthash:8].js' : '_[name].js',
+        filename: IS_PRODUCTION ? '[name].[contenthash:8].js' : '[name].js',
+        chunkFilename: IS_PRODUCTION ? '_[name].[contenthash:8].js' : '_[name].js',
         publicPath: PUBLIC_PATH,
     },
 
@@ -90,8 +91,8 @@ export default merge(defaultConfig, {
 
     plugins: [
         new MiniCssExtractPlugin({
-            filename: IS_PRODUCTION ? '[contenthash:8].css' : '[name].css',
-            chunkFilename: IS_PRODUCTION ? '_[contenthash:8].css' : '_[name].css',
+            filename: IS_PRODUCTION ? '[name].[contenthash:8].css' : '[name].css',
+            chunkFilename: IS_PRODUCTION ? '_[name].[contenthash:8].css' : '_[name].css',
         }),
 
         new WebpackManifestPlugin({
@@ -117,6 +118,6 @@ export default merge(defaultConfig, {
             'typeof window': '"object"',
         }),
 
-        ...(IS_PRODUCTION ? [new OptimizeCssAssetsPlugin()] : []),
+        ...(IS_PRODUCTION ? [new OptimizeCssAssetsPlugin(), new BundleAnalyzerPlugin.BundleAnalyzerPlugin()] : []),
     ],
 });

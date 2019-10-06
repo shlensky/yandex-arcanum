@@ -7,6 +7,8 @@ import { PAGES } from 'pages';
 import { Routes } from 'routes';
 
 import { Header } from 'components/Header/Header';
+import 'components/FileIcon/FileIcon';
+import 'components/Breadcrumbs/Breadcrumbs';
 
 import 'components/App/App.scss';
 import 'styles/Layout.scss';
