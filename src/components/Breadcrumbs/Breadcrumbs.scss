@@ -1,0 +1,24 @@
+.Breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e5e5e5;
+
+  &-Item {
+    height: 30px;
+  }
+
+  &-Link {
+    position: relative;
+    height: 30px;
+    margin-right: 32px;
+    text-decoration: none;
+    color: #7f8285;
+  }
+
+  &-Link:after {
+    position: absolute;
+    right: calc(32px / -2);
+    content: '/';
+    pointer-events: none;
+  }
+}

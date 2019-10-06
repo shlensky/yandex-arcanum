@@ -26,6 +26,10 @@ export function FileView({ treeItem, className }: FileViewProps) {
     }
     const { repositoryId, commitHash, path } = params;
 
+    if (!commitHash || !path) {
+        throw new Error('CommitHash & Path is mandatory');
+    }
+
     const dispatch = useDispatch();
     React.useEffect(() => {
         dispatch(fetchContent(repositoryId, commitHash, path));

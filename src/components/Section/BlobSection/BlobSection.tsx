@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { AppState } from 'store';
 import { FileView } from 'components/FileView/FileView';
+import { Breadcrumbs } from 'components/Breadcrumbs/Breadcrumbs';
 
 import 'components/Section/BlobSection/BlobSection.scss';
 
@@ -14,6 +15,9 @@ export default function BlobSection() {
 
     return (
         <section className={cnBlobSection()}>
+            <div className="Layout-Container">
+                <Breadcrumbs />
+            </div>
             {blobState.treeItem && <FileView treeItem={blobState.treeItem} className="Layout-FileView" />}
         </section>
     );

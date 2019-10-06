@@ -4,6 +4,7 @@ import { cn } from '@bem-react/classname';
 import { AppState } from 'store';
 import { useSelector } from 'react-redux';
 import { FilesTable } from '../../FilesTable/FilesTable';
+import { Breadcrumbs } from 'components/Breadcrumbs/Breadcrumbs';
 
 import 'components/Section/TreeSection/TreeSection.scss';
 
@@ -17,6 +18,7 @@ export default function TreeSection({  }: TreeSectionProps) {
     return (
         <section className={cnTreeSection(null, ['Body'])}>
             <div className="Layout Layout-Container">
+                <Breadcrumbs />
                 {files && <FilesTable files={files} className="DesktopOnly" />}
             </div>
         </section>

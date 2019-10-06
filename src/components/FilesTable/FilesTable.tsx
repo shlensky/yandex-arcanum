@@ -24,7 +24,10 @@ export function FilesTable({ files, className }: FilesTableProps) {
     if (!params) {
         return null;
     }
-    const { repositoryId, commitHash, path } = params;
+    let { repositoryId, commitHash, path } = params;
+    if (!commitHash) {
+        commitHash = 'master';
+    }
 
     return (
         <table className={cnFilesTable(null, ['Table', className])}>
