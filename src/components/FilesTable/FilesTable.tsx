@@ -47,7 +47,7 @@ export function FilesTable({ files, className }: FilesTableProps) {
                         <td className="Table-Data">
                             <Link to={`/${repositoryId}/tree/master/${file.name}`} className="Link_plain">
                                 <FileIcon type={file.type} />
-                                {file.name}
+                                {path ? file.name.replace(path + '/', '') : file.name}
                             </Link>
                         </td>
                         <td className="Table-Data">
