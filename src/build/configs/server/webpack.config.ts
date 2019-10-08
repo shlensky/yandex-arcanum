@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { DefinePlugin } from 'webpack';
 import { LAZY_COMPONENT_PLUGIN } from 'build/babel/lazyComponentBabelPlugin';
 import merge from 'webpack-merge';
-import defaultConfig from 'build/configs/common.webpack.config';
+import { PUBLIC_PATH, IS_PRODUCTION, defaultConfig } from 'build/configs/common.webpack.config';
 
 export default merge(defaultConfig, {
     name: 'server',
@@ -78,7 +78,12 @@ export default merge(defaultConfig, {
 
                     {
                         test: /\.svg$/,
-                        loader: 'react-svg-loader',
+                        loader: 'file-loader',
+                        options: {
+                            name: IS_PRODUCTION ? '[name].[contenthash:8].[ext]' : '[name].[ext]',
+                            publicPath: PUBLIC_PATH,
+                            emitFile: false,
+                        },
                     },
                 ],
             },

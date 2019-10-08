@@ -6,10 +6,7 @@ import { DefinePlugin } from 'webpack';
 import { resolve } from 'path';
 import { LAZY_COMPONENT_PLUGIN } from 'build/babel/lazyComponentBabelPlugin';
 import merge from 'webpack-merge';
-import defaultConfig from 'build/configs/common.webpack.config';
-
-const PUBLIC_PATH = '/assets/';
-const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+import { PUBLIC_PATH, IS_PRODUCTION, defaultConfig } from 'build/configs/common.webpack.config';
 
 export default merge(defaultConfig, {
     name: 'client',
@@ -82,7 +79,11 @@ export default merge(defaultConfig, {
 
                     {
                         test: /\.svg$/,
-                        loader: 'react-svg-loader',
+                        loader: 'file-loader',
+                        options: {
+                            name: IS_PRODUCTION ? '[name].[contenthash:8].[ext]' : '[name].[ext]',
+                            publicPath: PUBLIC_PATH,
+                        },
                     },
                 ],
             },

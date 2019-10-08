@@ -10,7 +10,7 @@ import { CodeTable } from 'components/CodeTable/CodeTable';
 
 import 'components/FileView/FileView.scss';
 import 'styles/Pane.scss';
-import DownloadIcon from 'components/FileView/download.svg';
+import downloadIcon from 'components/FileView/download.svg';
 
 const cnFileView = cn('FileView');
 
@@ -50,7 +50,7 @@ export function FileView({ treeItem, className }: FileViewProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <DownloadIcon />
+                    <img src={downloadIcon} alt="Download" />
                 </a>
             </div>
 

@@ -4,9 +4,10 @@ import { resolve } from 'path';
 
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
+const PUBLIC_PATH = '/assets/';
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-const config: Webpack.Configuration = {
+const defaultConfig: Webpack.Configuration = {
     mode: IS_PRODUCTION ? 'production' : 'development',
     node: false,
     watch: !IS_PRODUCTION,
@@ -20,4 +21,4 @@ const config: Webpack.Configuration = {
     plugins: IS_PRODUCTION ? [] : [new ForkTsCheckerWebpackPlugin()],
 };
 
-export default config;
+export { PUBLIC_PATH, IS_PRODUCTION, defaultConfig };

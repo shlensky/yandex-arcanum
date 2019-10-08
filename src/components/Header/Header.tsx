@@ -8,7 +8,7 @@ import { Dropdown } from 'components/Dropdown/Dropdown';
 
 import 'components/Header/Header.scss';
 import 'styles/Navigation.scss';
-import Logo from 'components/Header/logo.svg';
+import logo from 'components/Header/logo.svg';
 
 const cnHeader = cn('Header');
 
@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = function Header({ className }: Head
     return (
         <header className={cnHeader(null, ['Navigation', className])}>
             <Link to="/">
-                <Logo className={cnHeader('Logo')} />
+                <img src={logo} width={118} className={cnHeader('Logo')} alt="logo" />
             </Link>
 
             <Dropdown label={`Repository ${selectedRepo}`} className="Navigation-Item Navigation-Item_current">
