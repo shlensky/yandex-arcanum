@@ -10,7 +10,10 @@ const readdirAsync = promisify(fs.readdir);
 
 export async function getRepos(reposPath: string) {
     const files = await readdirAsync(reposPath, { withFileTypes: true });
-    return files.filter(file => file.isDirectory()).map(file => ({ name: file.name }));
+    return files
+        .filter(file => file.isDirectory())
+        .filter(file => !file.name.startsWith('.'))
+        .map(file => ({ name: file.name }));
 }
 
 interface ParsedTreeLine {
