@@ -15,5 +15,12 @@ module.exports = {
                 browserName: 'chrome' // this browser should be installed on your OS
             }
         }
-    }
+    },
+
+    plugins: {
+        'html-reporter/hermione': {
+            enabled: true,
+            path: 'tests/e2e/html-report',
+        }
+    },
 };
