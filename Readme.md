@@ -29,7 +29,7 @@
     selenium-standalone install 
     selenium-standalone start
 
-Нужно инициализировать подмодули git, это тестовые репозитории, 
+Нужно инициализировать подмодули git с тестовыми репозиториями, 
 они будут склонированы в директорию `./tests/e2e/repos`:
 
     git submodule init

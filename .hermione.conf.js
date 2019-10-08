@@ -3,7 +3,7 @@ module.exports = {
 
     sets: {
         desktop: {
-            files: 'tests/e2e'
+            files: 'tests/e2e/**/*.spec.js'
         }
     },
 
