@@ -1,0 +1,6 @@
+[submodule "tests/e2e/repos/first-repo"]
+	path = tests/e2e/repos/first-repo
+	url = git@github.com:shlensky/first-repo.git
+[submodule "tests/e2e/repos/second-repo"]
+	path = tests/e2e/repos/second-repo
+	url = git@github.com:shlensky/second-repo.git
