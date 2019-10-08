@@ -23,17 +23,23 @@
 
 ## Запуск e2e тестов
 
-Перед запуском тестов нужно установить и запустить selenium.
+Перед запуском тестов нужно установить и запустить selenium:
 
     npm install selenium-standalone@latest -g
     selenium-standalone install 
     selenium-standalone start
 
+Нужно инициализировать подмодули git, это тестовые репозитории, 
+они будут склонированы в директорию `./tests/e2e/repos`:
+
+    git submodule init
+    git submodule update  
+
 Еще нужно запустить само приложение, которое будем тестировать.
-Тесты полагаются, что сервер будет раздавать репозитории из папки `./tests/e2e/repos`  
+Тесты полагаются, что сервер будет раздавать репозитории из папки `./tests/e2e/repos`:  
 
     REPOS_DIR=./tests/e2e/repos npm start
 
-Запускаем тесты (hermione)
+Запускаем тесты (hermione):
 
     npm run e2e
