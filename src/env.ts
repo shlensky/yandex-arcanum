@@ -1,4 +1,5 @@
 import env from 'dotenv';
+import { resolve } from 'path';
 
 env.config();
 
@@ -13,4 +14,6 @@ if (!REPOS_DIR) {
     throw new Error('Please set REPOS_DIR in .env file');
 }
 
-export { PORT, REPOS_DIR };
+const absoluteReposDir = resolve(REPOS_DIR);
+
+export { PORT, absoluteReposDir as REPOS_DIR };

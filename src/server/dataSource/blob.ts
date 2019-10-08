@@ -33,7 +33,6 @@ export async function getBlob(router: RouterState): Promise<Partial<AppState>> {
     }
 
     return {
-        router,
         blob: await getBlobState(repositoryId, commitHash || 'master', path),
     };
 }

@@ -1,10 +1,17 @@
 import { EOL } from 'os';
 import { promisify } from 'util';
 import child from 'child_process';
+import fs from 'fs';
 
 import { TreeItem } from 'schema/Tree';
 
 const execAsync = promisify(child.exec);
+const readdirAsync = promisify(fs.readdir);
+
+export async function getRepos(reposPath: string) {
+    const files = await readdirAsync(reposPath, { withFileTypes: true });
+    return files.filter(file => file.isDirectory()).map(file => ({ name: file.name }));
+}
 
 interface ParsedTreeLine {
     mode: string;

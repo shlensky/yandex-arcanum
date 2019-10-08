@@ -25,7 +25,6 @@ export async function getTree(router: RouterState): Promise<Partial<AppState>> {
     }
 
     return {
-        router,
         tree: await getTreeState(repositoryId, commitHash || 'master', path || '.'),
     };
 }

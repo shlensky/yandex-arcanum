@@ -7,6 +7,8 @@
     .Dropdown-MenuItem  - item of menu
  */
 
+@import "styles/mixins/media.scss";
+
 .Dropdown {
   position: relative;
   display: inline-flex;
@@ -40,10 +42,18 @@
   }
 }
 
+.Dropdown-Menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 .Dropdown-MenuItem {
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  display: block;
 }
 
 .Dropdown-MenuItem:last-of-type {
@@ -57,7 +67,7 @@
 }
 
 /* desktop */
-@media (min-width: 361px) {
+@include desktop-only {
   .Dropdown-Content {
     position: absolute;
     z-index: 1;
@@ -86,7 +96,7 @@
 }
 
 /* mobile */
-@media (max-width: 360px) {
+@include mobile-only {
   .Dropdown-Content {
     position: fixed;
     z-index: 2;

@@ -2,7 +2,7 @@ import express from 'express';
 
 import { join } from 'path';
 
-import { PORT } from 'env';
+import { PORT, REPOS_DIR } from 'env';
 import { clientAssets } from 'server/middleware/clientAssets';
 import { prepareState } from 'server/middleware/prepareState';
 import { renderPage } from 'server/middleware/renderPage';
@@ -31,4 +31,4 @@ app.use(errorHandler());
 const port = PORT || 3000;
 app.listen(port);
 
-console.info(`Listening on http://localhost:${port}`);
+console.info(`Listening on http://localhost:${port}, serving repositories from ${REPOS_DIR}`);
