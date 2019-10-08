@@ -18,4 +18,22 @@ describe('Страница просмотра файла', function() {
                 expect(cells).to.eql(['1', '2']);
             });
     });
+
+    it('Отображает имя файла', function() {
+        return this.browser
+            .url('/first-repo/blob/master/dir1/first-file.txt')
+            .getText('.FileView .Pane-Header')
+            .then(text => {
+                expect(text).to.contains('dir1/first-file.txt');
+            });
+    });
+
+    it('Отображает размер файла', function() {
+        return this.browser
+            .url('/first-repo/blob/master/dir1/first-file.txt')
+            .getText('.FileView .Pane-Note')
+            .then(text => {
+                expect(text).to.eql('(28 bytes)');
+            });
+    });
 });

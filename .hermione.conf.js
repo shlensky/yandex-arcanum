@@ -1,6 +1,6 @@
 module.exports = {
     baseUrl: 'http://localhost:7777',
-    retry: 3,
+    retry: 1,
 
     sets: {
         desktop: {
