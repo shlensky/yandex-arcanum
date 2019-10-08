@@ -1,6 +1,7 @@
 module.exports = {
     baseUrl: 'http://localhost:7777',
     retry: 1,
+    screenshotsDir: 'tests/e2e/screens',
 
     sets: {
         desktop: {

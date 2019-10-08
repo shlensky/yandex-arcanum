@@ -22,6 +22,7 @@ describe('Хлебные крошки', function() {
     it('Отображают имя файла', function() {
         return this.browser
             .url('/first-repo/blob/master/dir1/first-file.txt')
+            .assertView('breadcrumbs', '.Breadcrumbs')
             .getText('.Breadcrumbs *')
             .then(breadCrumbs => {
                 expect(breadCrumbs).to.eql(['first-repo', 'dir1', 'first-file.txt']);

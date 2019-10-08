@@ -4,6 +4,7 @@ describe('Страница просмотра файла', function() {
     it('Отображает содержимое файла', function() {
         return this.browser
             .url('/first-repo/blob/master/dir1/first-file.txt')
+            .assertView('file-view', '.FileView')
             .getText('.CodeTable-Code')
             .then(cells => {
                 expect(cells[0]).to.eql('First file in dir1 content!');
