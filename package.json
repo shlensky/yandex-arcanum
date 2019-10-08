@@ -53,6 +53,7 @@
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-standard": "4.0.0",
     "fork-ts-checker-webpack-plugin": "1.5.0",
+    "hermione": "2.12.6",
     "husky": "3.0.8",
     "mini-css-extract-plugin": "0.8.0",
     "mocha": "6.2.1",
@@ -90,7 +91,8 @@
     "start": "webpack",
     "build": "cross-env NODE_ENV=production webpack --production",
     "eslint": "eslint 'src/**/*.ts' 'src/**/*.tsx'",
-    "test": "mocha -r register.js tests/**/*.test.ts"
+    "test": "mocha -r register.js tests/unit/**/*.test.ts",
+    "e2e": "hermione"
   },
   "husky": {
     "hooks": {
