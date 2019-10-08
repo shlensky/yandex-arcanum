@@ -31,7 +31,7 @@ export const Header: React.FC<HeaderProps> = function Header({ className }: Head
             <Dropdown label={`Repository ${selectedRepo}`} className="Navigation-Item Navigation-Item_current">
                 <div className="Dropdown-Content Dropdown-Menu Navigation-DropdownContent Scroll">
                     {repos.map(repo => (
-                        <Link to={repo.name} className="Dropdown-MenuItem" key={repo.name}>
+                        <Link to={'/' + repo.name} className="Dropdown-MenuItem" key={repo.name}>
                             {repo.name}
                         </Link>
                     ))}

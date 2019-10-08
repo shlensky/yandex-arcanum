@@ -18,7 +18,7 @@ export const HomeSection: React.FC<{}> = function NotFoundContent() {
             <ul>
                 {repos.map(repo => (
                     <li key={repo.name}>
-                        <Link to={repo.name} className="Link">
+                        <Link to={'/' + repo.name} className="Link">
                             {repo.name}
                         </Link>
                     </li>
