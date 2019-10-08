@@ -8,6 +8,7 @@ export function errorHandler(): ErrorRequestHandler {
         }
 
         if (process.env.NODE_ENV === 'production') {
+            console.error(err);
             res.json({});
         } else {
             res.json({ message: err.message, stack: err.stack });

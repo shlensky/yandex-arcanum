@@ -21,7 +21,6 @@ export default merge(defaultConfig, {
         os: 'commonjs os',
         util: 'commonjs util',
         path: 'commonjs path',
-        react: 'commonjs react',
         express: 'commonjs express',
         'node-fetch': 'commonjs node-fetch',
         // eslint-disable-next-line @typescript-eslint/camelcase
