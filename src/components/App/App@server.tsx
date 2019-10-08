@@ -6,6 +6,8 @@ import { ExpressState } from 'server/schema/ExpressState';
 import { App as BaseApp } from 'components/App/App';
 import { StaticRouter } from 'react-router';
 
+import favicon from 'components/App/favicon.png';
+
 export interface AppProps {
     state: ExpressState;
     url: string;
@@ -26,6 +28,7 @@ export const App: React.FC<AppProps> = function App({ url, state: { state, js, c
                         <title>Yandex Arcanum</title>
 
                         <meta name="viewport" content="width=device-width, initial-scale=1" />
+                        <link rel="shortcut icon" href={favicon} />
                     </head>
                     <body>
                         <div id="root">

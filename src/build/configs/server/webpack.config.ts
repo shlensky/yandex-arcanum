@@ -85,6 +85,16 @@ export default merge(defaultConfig, {
                             emitFile: false,
                         },
                     },
+
+                    {
+                        test: /\.png$/i,
+                        loader: 'file-loader',
+                        options: {
+                            name: IS_PRODUCTION ? '[name].[contenthash:8].[ext]' : '[name].[ext]',
+                            publicPath: PUBLIC_PATH,
+                            outputPath: 'client' + PUBLIC_PATH,
+                        },
+                    },
                 ],
             },
         ],

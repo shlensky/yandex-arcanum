@@ -7,6 +7,11 @@ declare namespace Express {
 }
 
 declare module '*.svg' {
-    const content: any;
-    export default content;
+    const url: string;
+    export default url;
+}
+
+declare module '*.png' {
+    const url: string;
+    export default url;
 }
