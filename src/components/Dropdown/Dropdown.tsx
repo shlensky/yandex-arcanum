@@ -14,9 +14,25 @@ export interface DropdownProps {
 
 export const Dropdown: React.FC<DropdownProps> = function Dropdown({ label, children, className }: DropdownProps) {
     const [opened, setOpened] = React.useState();
+    const containerRef = React.useRef(null);
+
+    function outsideClickHandler(e: MouseEvent) {
+        if (opened && (e.target as HTMLElement).parentNode !== containerRef.current) {
+            setOpened(false);
+        }
+    }
+
+    React.useEffect(() => {
+        document.addEventListener('click', outsideClickHandler);
+        return () => document.removeEventListener('click', outsideClickHandler);
+    });
 
     return (
-        <div onClick={() => setOpened(!opened)} className={cnDropdown({ state: opened ? 'opened' : '' }, [className])}>
+        <div
+            onClick={() => setOpened(!opened)}
+            className={cnDropdown({ state: opened ? 'opened' : '' }, [className])}
+            ref={containerRef}
+        >
             {label && <div className="Dropdown-Label">{label}</div>}
             {children}
         </div>
