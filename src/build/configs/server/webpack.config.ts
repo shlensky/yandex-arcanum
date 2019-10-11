@@ -24,6 +24,13 @@ export default merge(defaultConfig, {
         'node-fetch': 'commonjs node-fetch',
         // eslint-disable-next-line @typescript-eslint/camelcase
         child_process: 'commonjs child_process',
+
+        ...(IS_PRODUCTION
+            ? {}
+            : {
+                  react: 'commonjs react',
+                  'react-dom': 'commonjs react-dom',
+              }),
     },
 
     module: {
