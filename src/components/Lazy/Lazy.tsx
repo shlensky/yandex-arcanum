@@ -48,11 +48,3 @@ export function lazyComponent({ asyncLoader, syncLoader, id }: LazyProps): LazyC
 
     return LazyComponent;
 }
-
-export function lazyComponentBabel(loader: (() => Promise<LazyModule>) | LazyProps): LazyComponentType {
-    if (typeof loader === 'function') {
-        throw new Error('Add lazyComponentBabelPlugin to your babel config');
-    }
-
-    return lazyComponent(loader);
-}

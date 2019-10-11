@@ -1,7 +1,6 @@
 import { WebpackClusterPlugin } from 'build/webpack/WebpackClusterPlugin';
 import { resolve } from 'path';
 import { DefinePlugin } from 'webpack';
-import { LAZY_COMPONENT_PLUGIN } from 'build/babel/lazyComponentBabelPlugin';
 import merge from 'webpack-merge';
 import { PUBLIC_PATH, IS_PRODUCTION, defaultConfig } from 'build/configs/common.webpack.config';
 
@@ -61,7 +60,6 @@ export default merge(defaultConfig, {
                                         ['@babel/preset-react', {}],
                                     ],
                                     plugins: [
-                                        LAZY_COMPONENT_PLUGIN,
                                         '@babel/plugin-proposal-class-properties',
                                         '@babel/plugin-transform-runtime',
                                     ],
