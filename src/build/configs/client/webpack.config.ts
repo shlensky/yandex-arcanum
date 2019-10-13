@@ -7,6 +7,8 @@ import { resolve } from 'path';
 import merge from 'webpack-merge';
 import { PUBLIC_PATH, IS_PRODUCTION, defaultConfig } from 'build/configs/common.webpack.config';
 
+const ANALYZE_BUNDLE = process.env.ANALYZE_BUNDLE === 'true';
+
 export default merge(defaultConfig, {
     name: 'client',
     entry: resolve('src/client/index.ts'),
@@ -117,6 +119,7 @@ export default merge(defaultConfig, {
             'typeof window': '"object"',
         }),
 
-        ...(IS_PRODUCTION ? [new OptimizeCssAssetsPlugin(), new BundleAnalyzerPlugin.BundleAnalyzerPlugin()] : []),
+        ...(IS_PRODUCTION ? [new OptimizeCssAssetsPlugin()] : []),
+        ...(ANALYZE_BUNDLE ? [new BundleAnalyzerPlugin.BundleAnalyzerPlugin()] : []),
     ],
 });
