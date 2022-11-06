@@ -53,7 +53,7 @@
     "eslint-plugin-standard": "4.0.0",
     "file-loader": "4.2.0",
     "fork-ts-checker-webpack-plugin": "1.5.0",
-    "hermione": "2.12.6",
+    "hermione": "5.3.1",
     "html-reporter": "5.0.0",
     "husky": "3.0.8",
     "ignore-styles": "5.0.1",
